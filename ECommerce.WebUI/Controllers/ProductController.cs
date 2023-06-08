@@ -12,10 +12,19 @@ namespace ECommerce.WebUI.Controllers
             _productService = productService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page=1,int category=0)
         {
-            var result = _productService.GetAll();
-            return Ok(result);
+            int pageSize = 10;
+            var products = _productService.GetAllByCategoryId(category);
+            var model = new ProductListViewModel
+            {
+                Products=products.Skip((page-1)*pageSize).Take(pageSize).ToList(),
+                CurrentCategory=category,
+                PageCount=(int)Math.Ceiling(products.Count/(double)pageSize),
+                PageSize=pageSize,
+                CurrentPage=page
+            };
+            return View(model);
         }
     }
 }

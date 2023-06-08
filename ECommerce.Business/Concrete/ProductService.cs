@@ -22,5 +22,15 @@ namespace ECommerce.Business.Concrete
         {
             return _productDal.GetList();
         }
+
+        public List<Product> GetAllByCategoryId(int id)
+        {
+            return _productDal.GetList(p => p.CategoryId == id || id==0);
+        }
+
+        public Product GetById(int id)
+        {
+            return _productDal.Get(p => p.ProductId == id);
+        }
     }
 }

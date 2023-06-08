@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Business.Abstract
 {
-    public interface IProductService
+    public interface ICategoryService
     {
-        List<Product> GetAll();
-        List<Product> GetAllByCategoryId(int id);
-        Product GetById(int id);
+        List<Category> GetAll();
     }
 }

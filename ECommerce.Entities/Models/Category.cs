@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ECommerce.Core.Abstraction;
+using System;
 using System.Collections.Generic;
 
 namespace ECommerce.Entities.Models
 {
-    public partial class Category
+    public partial class Category:IEntity
     {
         public Category()
         {
