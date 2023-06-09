@@ -18,6 +18,11 @@ namespace ECommerce.WebUI.Controllers
             _productService = productService;
         }
 
+        public IActionResult Increase(int productId)
+        {
+            return View();
+        }
+
         public IActionResult AddToCart(int productId)
         {
             var productToAdded=_productService.GetById(productId);
