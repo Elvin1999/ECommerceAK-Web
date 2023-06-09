@@ -30,11 +30,11 @@ namespace ECommerce.Business.Concrete
             return cart.CartLines;
         }
 
-        public void RemoveFromCart(Cart cart, Product product)
+        public void RemoveFromCart(Cart cart, int productId)
         {
             cart.CartLines.Remove(cart
                 .CartLines
-                .FirstOrDefault(c => c.Product.ProductId == product.ProductId));
+                .FirstOrDefault(c => c.Product.ProductId == productId));
         }
     }
 }
