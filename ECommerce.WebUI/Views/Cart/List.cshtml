@@ -16,17 +16,17 @@
             <td>@item.Product.UnitPrice</td>
             <td>@item.Product.UnitsInStock</td>
             <td style="display:flex;">
-                <button class="btn btn-primary" asp-controller="Cart"
+                <a class="btn btn-primary" asp-controller="Cart"
                     asp-action="Increase" asp-route-productId="@item.Product.ProductId">
                     +
-                </button>
+                </a>
                 <h4 style="margin-left:5px;margin-right:5px;">
                      @item.Quantity
                 </h4>
-                <button class="btn btn-primary" asp-controller="Cart"
-                    asp-action="Decrease" asp-route-productId="@item.Product.ProductId">
+                <a class="btn btn-primary" asp-controller="Cart"
+               asp-action="Decrease" asp-route-productId="@item.Product.ProductId">
                     -
-                </button>
+                </a>
             </td>
             <td class="text-right">
                 <a class="btn btn-xs btn-danger"

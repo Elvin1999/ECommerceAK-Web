@@ -1,4 +1,5 @@
 ﻿using ECommerce.Business.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.WebUI.Controllers

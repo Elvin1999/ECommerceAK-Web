@@ -25,6 +25,22 @@ namespace ECommerce.Business.Concrete
             }
         }
 
+        public void DecreaseQuantity(Cart cart, int productId)
+        {
+            var cartLine = cart.CartLines.FirstOrDefault(c => c.Product.ProductId == productId);
+            if (cartLine.Quantity > 1){
+                cartLine.Quantity--;
+            }
+        }
+
+        public void IncreaseQuantity(Cart cart, int productId)
+        {
+            var cartLine = cart.CartLines.FirstOrDefault(c => c.Product.ProductId == productId);
+            if (cartLine.Quantity < cartLine.Product.UnitsInStock){
+            cartLine.Quantity++;
+            }
+        }
+
         public List<CartLine> List(Cart cart)
         {
             return cart.CartLines;
@@ -36,5 +52,6 @@ namespace ECommerce.Business.Concrete
                 .CartLines
                 .FirstOrDefault(c => c.Product.ProductId == productId));
         }
+
     }
 }

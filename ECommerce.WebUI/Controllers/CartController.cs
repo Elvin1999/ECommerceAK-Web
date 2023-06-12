@@ -20,7 +20,18 @@ namespace ECommerce.WebUI.Controllers
 
         public IActionResult Increase(int productId)
         {
-            return View();
+            var cart = _cartSessionService.GetCart();
+            _cartService.IncreaseQuantity(cart, productId);
+            _cartSessionService.SetCart(cart);
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Decrease(int productId)
+        {
+            var cart = _cartSessionService.GetCart();
+            _cartService.DecreaseQuantity(cart, productId);
+            _cartSessionService.SetCart(cart);
+            return RedirectToAction("List");
         }
 
         public IActionResult AddToCart(int productId)
