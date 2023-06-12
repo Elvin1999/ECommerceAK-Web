@@ -27,8 +27,16 @@ namespace ECommerce.WebUI.Controllers
 
         // POST: AccountController
         [HttpPost]
-        public ActionResult Login(LoginViewModel model)
+        public async Task<ActionResult> Login(LoginViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+            }
             return View();
         }
 
@@ -79,9 +87,10 @@ namespace ECommerce.WebUI.Controllers
 
 
         // GET: AccountController
-        public ActionResult LogOut()
+        public async Task<ActionResult> LogOut()
         {
-            return View();
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login","Account");
         }
     }
 }
